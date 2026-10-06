@@ -11,32 +11,44 @@ namespace Okosotthon
         private bool onlineE;
         private DateTime utolsoFrissites;
 
+        public string Azonosito { get => azonosito; set => azonosito = value; }
+        public string Nev { get => nev; set => nev = value; }
+        public bool OnlineE { get => onlineE; set => onlineE = value; }
+        public DateTime UtolsoFrissites { get => utolsoFrissites; set => utolsoFrissites = value; }
 
         public OkosEszkoz(string azonosito, string nev)
         {
-
-            throw new NotImplementedException();
+            this.Azonosito = azonosito;
+            this.Nev = nev;
+            this.OnlineE = false;
+            this.UtolsoFrissites = DateTime.Now;
         }
 
 
         public void Csatlakozas()
         {
-            throw new NotImplementedException();
+            this.OnlineE = true;
         }
 
 
         public void KapcsolatBontasa()
         {
-            throw new NotImplementedException();
+            this.onlineE = false;
         }
         public bool DiagnosztikaFuttatasa()
         {
-            throw new NotImplementedException();
+            if (!this.OnlineE)
+            {
+                return false;
+            }
+
+            return this.OnTesztFuttatasa();
         }
 
         public virtual void GyariBeallitasokVisszaallitasa()
         {
-            throw new NotImplementedException();
+            this.OnlineE = false;
+            this.UtolsoFrissites = DateTime.Now;
         }
 
 
